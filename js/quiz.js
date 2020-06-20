@@ -13,31 +13,42 @@ const scoreDiv = document.getElementById("score");
 let TIMER;
 let score = 0;
 
-let questions = [
-    {
-        question : "Each of the following statements is true, except:",
-        choiceA: "Virus come in different types",
-        choiceB: "Viruses infect living cells",
-        choiceC: "Viruses can replicate without hosts",
-        choiceD: "Viruses can cause illnesses",
-        answer: "C"
-    },
-    {
-        question : "A virus infects a host in order to:",
-        choiceA: "Take in nutrients",
-        choiceB: "Make the host sick",
-        choiceC: "Make copies of itself",
-        choiceD: "Destroy the host's cells",
-        answer: "C"
-    },
-    {
-        question : "The distinguishing feature of a coronavirus is its:",
-        choiceA: "Size",
-        choiceB: "Mobility",
-        choiceC: "Shape",
-        choiceD: "Deadliness",
-        answer: "C"
+class Question{
+    constructor(question,choiceA,choiceB,choiceC,choiceD,answer){
+        this.question=question;
+        this.choiceA=choiceA;
+        this.choiceB=choiceB;
+        this.choiceC=choiceC;
+        this.choiceD=choiceD;
+        this.answer=answer;
     }
+}
+
+let questions = [
+    new Question(
+        "Each of the following statements is true, except:",
+        "Virus come in different types",
+        "Viruses infect living cells",
+        "Viruses can replicate without hosts",
+        "Viruses can cause illnesses",
+        "C"
+    ),
+    new Question(
+        "A virus infects a host in order to:",
+        "Take in nutrients",
+        "Make the host sick",
+        "Make copies of itself",
+        "Destroy the host's cells",
+        "C"
+    ),
+    new Question(
+        "The distinguishing feature of a coronavirus is its:",
+        "Size",
+        "Mobility",
+        "Shape",
+        "Deadliness",
+        "C"
+    )
 ];
 
 const lastQuestion = questions.length-1;
@@ -84,6 +95,11 @@ function renderCounter(){
         if(runningQuestion<lastQuestion){
             runningQuestion++;
             renderQuestion();
+        }else{
+            clearInterval(TIMER);
+            document.getElementById("timer").style.display="none";
+            quiz.style.display = "none";
+            scoreDiv.innerHTML= "<h1>Your score is "+score+"/"+questions.length+"</h1>";
         }
     }
 }
