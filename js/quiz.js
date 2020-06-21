@@ -48,7 +48,63 @@ let questions = [
         "Shape",
         "Deadliness",
         "C"
-    )
+    ),
+    new Question(
+        "A typical coronavirus infection:",
+        "Is extremely dangerous",
+        "Has mild symptoms",
+        "Cannot spread to humans",
+        "Is resistant to hand washing",
+        "B"
+    ),
+    new Question(
+        " Coronavirus infections are likely to be more serious for:",
+        "Teens",
+        "Active adults",
+        "Frequent travelers",
+        "People with weakened immune systems",
+        "D"
+    ),
+    new Question(
+        "An outbreak of a virus occurs when:",
+        "Symptoms of the virus get worse",
+        "The virus spreads to more than one organ",
+        "Someone dies from the virus",
+        "The virus spreads to more and more hosts",
+        "D"
+    ),
+    new Question(
+        "What does it mean when a city is quarantined during a virus outbreak?",
+        "Everyone in the city is infected",
+        "No one can enter or leave the city",
+        "The city’s population is immune to the virus",
+        "Doctors in the city are developing a cure",
+        "B"
+    ),
+    new Question(
+        "Which practice prevents the spread of germs?",
+        "Washing your hands often",
+        "Blowing your nose ",
+        "Reusing the same tissue",
+        "Coughing into your hand",
+        "A"
+    ),
+    new Question(
+        "Covering your mouth when you cough or sneeze is recommended to:",
+        "Prevent germs from entering your body",
+        "Get rid of germs from inside your body",
+        "Avoid getting other people sick",
+        "Warn other people that you are sick",
+        "C"
+    ),
+    new Question(
+        "The most reliable source of information about virus outbreaks is:",
+        "News headlines",
+        "Social media",
+        "Your peers",
+        "The World Health Organization",
+        "D"
+    ),
 ];
 
 const lastQuestion = questions.length-1;
@@ -62,11 +118,11 @@ start.addEventListener("click",function(){
     renderProgress();
     renderCounter();
     TIMER=setInterval(renderCounter,1000);
+    $("#quiz").fadeIn();
 })
 
 function renderQuestion(){
     let q = questions[runningQuestion];
-
     question.innerHTML = q.question;
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
@@ -81,7 +137,7 @@ function renderProgress(){
 }
 
 let count=0;
-const questionTime=10;
+const questionTime=15;
 const gaugeWidth=150;
 const gaugeUnit=gaugeWidth/questionTime;
 function renderCounter(){
@@ -120,13 +176,16 @@ function checkAnswer(answer){
         document.getElementById("timer").style.display="none";
         quiz.style.display = "none";
         scoreDiv.innerHTML= "<h1>Your score is "+score+"/"+questions.length+"</h1>";
+        new Audio("media/sounds/score.wav").play();
     }
 }
 
 function answerIsCorrect(){
     document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+    new Audio("media/sounds/correct.wav").play();
 }
 
 function answerIsWrong(){
     document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+    new Audio("media/sounds/wrong.wav").play();
 }
