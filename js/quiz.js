@@ -114,6 +114,7 @@ start.addEventListener("click",function(){
     quiz.style.display = "block";
     start.style.display = "none";
     document.getElementById("title").style.display = "none" ;
+    document.getElementById("par").style.display = "none" ;
     renderQuestion();
     renderProgress();
     renderCounter();
@@ -133,6 +134,7 @@ function renderQuestion(){
 function renderProgress(){
     for(let qIndex = 0; qIndex <= lastQuestion; qIndex++){
         progress.innerHTML += "<div class='prog' id="+ qIndex +"></div>";
+        
     }
 }
 
@@ -181,11 +183,11 @@ function checkAnswer(answer){
 }
 
 function answerIsCorrect(){
-    document.getElementById(runningQuestion).style.backgroundColor = "#0f0";
+    document.getElementById(runningQuestion).style.backgroundColor = "rgb(64, 151, 76)";
     new Audio("media/sounds/correct.wav").play();
 }
 
 function answerIsWrong(){
-    document.getElementById(runningQuestion).style.backgroundColor = "#f00";
+    document.getElementById(runningQuestion).style.backgroundColor = "#b62626";
     new Audio("media/sounds/wrong.wav").play();
 }
