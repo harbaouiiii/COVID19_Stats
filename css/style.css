@@ -312,3 +312,16 @@ button:hover{
 .banner h2{
     font-size: 50px;
 }
+
+.part2 a{
+    text-decoration: none;
+    display: inline-block;
+    padding: 1em;
+    font-weight: bold;
+    color: rgb(64, 151, 76);
+    cursor: pointer;
+}
+
+.part2 a:hover{
+    color: rgba(64, 151, 76,0.7);
+}

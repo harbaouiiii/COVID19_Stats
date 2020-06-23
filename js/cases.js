@@ -1,16 +1,29 @@
+var dataArray = [];
 $(document).ready(function(){
     $.getJSON("https://api.covid19api.com/summary",function(data){
         for(i=0;i<data.Countries.length;i++){
+            dataArray.push({
+                country: data.Countries[i].Country,
+                newConfirmed: data.Countries[i].NewConfirmed,
+                totalConfirmed: data.Countries[i].TotalConfirmed,
+                newDeaths: data.Countries[i].NewDeaths,
+                totalDeaths: data.Countries[i].TotalDeaths,
+                newRecovered: data.Countries[i].NewRecovered,
+                totalRecovered: data.Countries[i].TotalRecovered,
+                date: convertDate(data.Countries[i].Date)
+            });
+        }
+        for(i=0;i<dataArray.length;i++){
             var row = `
                 <tr>
-                    <td>${data.Countries[i].Country}</td>
-                    <td>${numberWithCommas(data.Countries[i].NewConfirmed)}</td>
-                    <td>${numberWithCommas(data.Countries[i].TotalConfirmed)}</td>
-                    <td>${numberWithCommas(data.Countries[i].NewDeaths)}</td>
-                    <td>${numberWithCommas(data.Countries[i].TotalDeaths)}</td>
-                    <td>${numberWithCommas(data.Countries[i].NewRecovered)}</td>
-                    <td>${numberWithCommas(data.Countries[i].TotalRecovered)}</td>
-                    <td>${convertDate(data.Countries[i].Date)}</td>
+                    <td>${dataArray[i].country}</td>
+                    <td>${numberWithCommas(dataArray[i].newConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].newDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].newRecovered)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalRecovered)}</td>
+                    <td>${dataArray[i].date}</td>
                 </tr>
             `;
             $(row).appendTo('#my-table');
@@ -18,6 +31,23 @@ $(document).ready(function(){
         $('.cases').append(numberWithCommas(data.Global.TotalConfirmed));
         $('.deaths').append(numberWithCommas(data.Global.TotalDeaths));
         $('.recovered').append(numberWithCommas(data.Global.TotalRecovered));
+
+        for(i=0;i<dataArray.length;i++){
+            var row = `
+                <tr>
+                    <td>${dataArray[i].country}</td>
+                    <td>${dataArray[i].newConfirmed}</td>
+                    <td>${dataArray[i].totalConfirmed}</td>
+                    <td>${dataArray[i].newDeaths}</td>
+                    <td>${dataArray[i].totalDeaths}</td>
+                    <td>${dataArray[i].newRecovered}</td>
+                    <td>${dataArray[i].totalRecovered}</td>
+                    <td>${dataArray[i].date}</td>
+                </tr>
+            `;
+            $(row).appendTo('#my-table1');
+        }
+
     })
     $('#info').click(function(event) {
         $('html, body').animate({
@@ -25,13 +55,88 @@ $(document).ready(function(){
         }, 1000);
    });
    $('#protect').click(function(event) {
-    $('html, body').animate({
-        scrollTop: $("#protect_div").offset().top
-    }, 1000);
-});
+        $('html, body').animate({
+            scrollTop: $("#protect_div").offset().top
+        }, 1000);
+    });
+    $('#country').click(function(){
+        dataArray.sort(compareCountry);
+        $("#my-table").empty();
+        for(i=0;i<dataArray.length;i++){
+            var row = `
+                <tr>
+                    <td>${dataArray[i].country}</td>
+                    <td>${numberWithCommas(dataArray[i].newConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].newDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].newRecovered)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalRecovered)}</td>
+                    <td>${dataArray[i].date}</td>
+                </tr>
+            `;
+            $(row).appendTo('#my-table');
+        }
+    });
+    $('#totalConfirmed').click(function(){
+        dataArray.sort(compareTotalConfirmed);
+        $("#my-table").empty();
+        for(i=0;i<dataArray.length;i++){
+            var row = `
+                <tr>
+                    <td>${dataArray[i].country}</td>
+                    <td>${numberWithCommas(dataArray[i].newConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].newDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].newRecovered)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalRecovered)}</td>
+                    <td>${dataArray[i].date}</td>
+                </tr>
+            `;
+            $(row).appendTo('#my-table');
+        }
+    });
+    $('#totalDeaths').click(function(){
+        dataArray.sort(compareTotalDeaths);
+        $("#my-table").empty();
+        for(i=0;i<dataArray.length;i++){
+            var row = `
+                <tr>
+                    <td>${dataArray[i].country}</td>
+                    <td>${numberWithCommas(dataArray[i].newConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].newDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].newRecovered)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalRecovered)}</td>
+                    <td>${dataArray[i].date}</td>
+                </tr>
+            `;
+            $(row).appendTo('#my-table');
+        }
+    });
+    $('#totalRecovered').click(function(){
+        dataArray.sort(compareTotalRecovered);
+        $("#my-table").empty();
+        for(i=0;i<dataArray.length;i++){
+            var row = `
+                <tr>
+                    <td>${dataArray[i].country}</td>
+                    <td>${numberWithCommas(dataArray[i].newConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalConfirmed)}</td>
+                    <td>${numberWithCommas(dataArray[i].newDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalDeaths)}</td>
+                    <td>${numberWithCommas(dataArray[i].newRecovered)}</td>
+                    <td>${numberWithCommas(dataArray[i].totalRecovered)}</td>
+                    <td>${dataArray[i].date}</td>
+                </tr>
+            `;
+            $(row).appendTo('#my-table');
+        }
+    });
 })
 
-//convert date to dd/MM/YYYY
 function convertDate(str){
     var date = str.substring(0,10);
     var myDate = date.split("-");
@@ -44,4 +149,56 @@ function numberWithCommas(x) {
     while (pattern.test(x))
         x = x.replace(pattern, "$1,$2");
     return x;
+}
+
+function compareTotalConfirmed(a, b) {
+    const A = a.totalConfirmed;
+    const B = b.totalConfirmed;
+  
+    let comparison = 0;
+    if (A > B) {
+      comparison = 1;
+    } else if (A < B) {
+      comparison = -1;
+    }
+    return comparison*-1;
+}
+
+function compareTotalDeaths(a, b) {
+    const A = a.totalDeaths;
+    const B = b.totalDeaths;
+  
+    let comparison = 0;
+    if (A > B) {
+      comparison = 1;
+    } else if (A < B) {
+      comparison = -1;
+    }
+    return comparison*-1;
+}
+
+function compareTotalRecovered(a, b) {
+    const A = a.totalRecovered;
+    const B = b.totalRecovered;
+  
+    let comparison = 0;
+    if (A > B) {
+      comparison = 1;
+    } else if (A < B) {
+      comparison = -1;
+    }
+    return comparison*-1;
+}
+
+function compareCountry(a, b) {
+    const A = a.country.toUpperCase();
+    const B = b.country.toUpperCase();
+  
+    let comparison = 0;
+    if (A > B) {
+      comparison = 1;
+    } else if (A < B) {
+      comparison = -1;
+    }
+    return comparison;
 }
