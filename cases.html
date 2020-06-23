@@ -22,33 +22,31 @@
     </ul>
     <div class="part1">
         <h1>Coronavirus Cases: </h1>
-        <span class="cases"></span>
+        <span class="cases" id="compteur"></span>
         <h1>Deaths: </h1>
-        <span class="deaths"></span>
+        <span class="deaths" id="compteur"></span>
         <h1>Recovered: </h1>
-        <span class="recovered"></span>
+        <span class="recovered" id="compteur"></span>
     </div>
     <div class="part2">
         <h1 class="show">List of cases</h1>
-        <a id="country" href="#">Country</a>
-        <a id="totalConfirmed" href="#">Total Confirmed</a>
-        <a id="totalDeaths" href="#">Total Deaths</a>
-        <a id="totalRecovered" href="#">Total Recovered</a>
+        <input type="text" id="myInput" onkeyup="searchCountry()" placeholder="Search..">
         <table class="content-table" id="mytable">
             <tr class="head">
-                <th>Country</th>
+                <th id="country">Country</th>
                 <th>New Confirmed</th>
-                <th>Total Confirmed</th>
+                <th id="totalConfirmed">Total Confirmed</th>
                 <th>New Deaths</th>
-                <th>Total Deaths</th>
+                <th id="totalDeaths">Total Deaths</th>
                 <th>New Recovered</th>
-                <th>Total Recovered</th>
+                <th id="totalRecovered">Total Recovered</th>
                 <th>Last Update</th>
             </tr>
             <tbody id="my-table">
 
             </tbody>
         </table>
+        <h1 class="show" id="res"></h1>
     </div>
     <script src="js/cases.js"></script>
 </body>

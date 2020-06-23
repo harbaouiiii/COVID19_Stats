@@ -1,17 +1,37 @@
 var dataArray = [];
+
+class Data{
+    constructor(
+        country,newConfirmed,totalConfirmed,
+        newDeaths,totalDeaths,newRecovered,
+        totalRecovered,date
+    ){
+        this.country = country;
+        this.newConfirmed=newConfirmed;
+        this.totalConfirmed=totalConfirmed;
+        this.newDeaths=newDeaths;
+        this.totalDeaths=totalDeaths;
+        this.newRecovered=newRecovered;
+        this.totalRecovered=totalRecovered;
+        this.date=date;
+    }
+}
+
 $(document).ready(function(){
     $.getJSON("https://api.covid19api.com/summary",function(data){
         for(i=0;i<data.Countries.length;i++){
-            dataArray.push({
-                country: data.Countries[i].Country,
-                newConfirmed: data.Countries[i].NewConfirmed,
-                totalConfirmed: data.Countries[i].TotalConfirmed,
-                newDeaths: data.Countries[i].NewDeaths,
-                totalDeaths: data.Countries[i].TotalDeaths,
-                newRecovered: data.Countries[i].NewRecovered,
-                totalRecovered: data.Countries[i].TotalRecovered,
-                date: convertDate(data.Countries[i].Date)
-            });
+            dataArray.push(
+                new Data(
+                    data.Countries[i].Country,
+                    data.Countries[i].NewConfirmed,
+                    data.Countries[i].TotalConfirmed,
+                    data.Countries[i].NewDeaths,
+                    data.Countries[i].TotalDeaths,
+                    data.Countries[i].NewRecovered,
+                    data.Countries[i].TotalRecovered,
+                    convertDate(data.Countries[i].Date)
+                )
+            );
         }
         for(i=0;i<dataArray.length;i++){
             var row = `
@@ -201,4 +221,33 @@ function compareCountry(a, b) {
       comparison = -1;
     }
     return comparison;
+}
+
+function searchCountry() {
+    input = document.getElementById('myInput');
+    filter = input.value.toUpperCase();
+    
+    document.getElementById("my-table").innerHTML="";
+  
+    for (i = 0; i < dataArray.length ; i++) {
+      if(dataArray[i].country.toUpperCase().includes(filter)){
+        var row = `
+            <tr>
+                <td>${dataArray[i].country}</td>
+                <td>${numberWithCommas(dataArray[i].newConfirmed)}</td>
+                <td>${numberWithCommas(dataArray[i].totalConfirmed)}</td>
+                <td>${numberWithCommas(dataArray[i].newDeaths)}</td>
+                <td>${numberWithCommas(dataArray[i].totalDeaths)}</td>
+                <td>${numberWithCommas(dataArray[i].newRecovered)}</td>
+                <td>${numberWithCommas(dataArray[i].totalRecovered)}</td>
+                <td>${dataArray[i].date}</td>
+            </tr>
+        `;
+        $(row).appendTo('#my-table');
+      } else{
+        document.getElementById("my-table").innerHTML="";
+        var text = 'Country not found!';
+        $(text).appendTo('#res');
+      }
+    }
 }
