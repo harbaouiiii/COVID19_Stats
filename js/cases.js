@@ -58,13 +58,13 @@ $(document).ready(function(){
         $('.deaths').append(numberWithCommas(data.Global.TotalDeaths)).easy_number_animate({
             start_value: 0,
             end_value: data.Global.TotalDeaths,
-            duration: 1000,
+            duration: 1500,
             delimiter:','
         });
         $('.recovered').append(numberWithCommas(data.Global.TotalRecovered)).easy_number_animate({
             start_value: 0,
             end_value: data.Global.TotalRecovered,
-            duration: 1000,
+            duration: 2000,
             delimiter:','
         });
         
