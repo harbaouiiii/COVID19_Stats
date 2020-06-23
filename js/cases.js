@@ -244,10 +244,6 @@ function searchCountry() {
             </tr>
         `;
         $(row).appendTo('#my-table');
-      } else{
-        document.getElementById("my-table").innerHTML="";
-        var text = 'Country not found!';
-        $(text).appendTo('#res');
       }
     }
 }
