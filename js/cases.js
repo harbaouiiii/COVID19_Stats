@@ -48,9 +48,26 @@ $(document).ready(function(){
             `;
             $(row).appendTo('#my-table');
         }
-        $('.cases').append(numberWithCommas(data.Global.TotalConfirmed));
-        $('.deaths').append(numberWithCommas(data.Global.TotalDeaths));
-        $('.recovered').append(numberWithCommas(data.Global.TotalRecovered));
+
+        $('.cases').append(numberWithCommas(data.Global.TotalConfirmed)).easy_number_animate({
+            start_value: 0,
+            end_value: data.Global.TotalConfirmed,
+            duration: 1000,
+            delimiter:','
+        });
+        $('.deaths').append(numberWithCommas(data.Global.TotalDeaths)).easy_number_animate({
+            start_value: 0,
+            end_value: data.Global.TotalDeaths,
+            duration: 1000,
+            delimiter:','
+        });
+        $('.recovered').append(numberWithCommas(data.Global.TotalRecovered)).easy_number_animate({
+            start_value: 0,
+            end_value: data.Global.TotalRecovered,
+            duration: 1000,
+            delimiter:','
+        });
+        
 
         for(i=0;i<dataArray.length;i++){
             var row = `
@@ -69,6 +86,7 @@ $(document).ready(function(){
         }
 
     })
+        
     $('#info').click(function(event) {
         $('html, body').animate({
             scrollTop: $("#info_div").offset().top
