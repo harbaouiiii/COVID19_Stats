@@ -178,7 +178,7 @@ function checkAnswer(answer){
         document.getElementById("timer").style.display="none";
         quiz.style.display = "none";
         document.getElementById("score").style.display="block";
-        scoreDiv.innerHTML= '<h1>Your score is '+score+'/'+questions.length+'</h1><br><p id="par">View correct answers!</p>';
+        scoreDiv.innerHTML= '<h1>Your score is '+score+'/'+questions.length;
         new Audio("media/sounds/score.wav").play();
     }
 }

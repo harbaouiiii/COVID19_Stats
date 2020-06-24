@@ -271,7 +271,7 @@ function searchCountry() {
             theme: "light2",
             animationEnabled: true,
             title: {
-                text: "Pie Chart"
+                text: ""
             },
             data: [{
                 type: "pie",
