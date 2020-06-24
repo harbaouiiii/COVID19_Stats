@@ -119,6 +119,7 @@ $(document).ready(function(){
     $('#totalConfirmed').click(function(){
         dataArray.sort(compareTotalConfirmed);
         $("#my-table").empty();
+        $("#chartContainer").empty();
         for(i=0;i<dataArray.length;i++){
             var row = `
                 <tr>
@@ -138,6 +139,7 @@ $(document).ready(function(){
     $('#totalDeaths').click(function(){
         dataArray.sort(compareTotalDeaths);
         $("#my-table").empty();
+        $("#chartContainer").empty();
         for(i=0;i<dataArray.length;i++){
             var row = `
                 <tr>
@@ -157,6 +159,7 @@ $(document).ready(function(){
     $('#totalRecovered').click(function(){
         dataArray.sort(compareTotalRecovered);
         $("#my-table").empty();
+        $("#chartContainer").empty();
         for(i=0;i<dataArray.length;i++){
             var row = `
                 <tr>
@@ -262,6 +265,31 @@ function searchCountry() {
             </tr>
         `;
         $(row).appendTo('#my-table');
-      }
+
+        document.getElementById("chartContainer").style.display="";
+        var chart = new CanvasJS.Chart("chartContainer", {
+            theme: "light2",
+            animationEnabled: true,
+            title: {
+                text: "Pie Chart"
+            },
+            data: [{
+                type: "pie",
+                startAngle: 25,
+                toolTipContent: "<b>{label}</b>: {y}",
+                showInLegend: "true",
+                legendText: "{label}",
+                indexLabelFontSize: 16,
+                indexLabel: "{label} - {y}",
+                dataPoints: [
+                    { y: dataArray[i].totalConfirmed, label: "Total Confirmed" },
+                    { y: dataArray[i].totalDeaths, label: "Total Deaths" },
+                    { y: dataArray[i].totalRecovered, label: "Total Recovered" },
+                ]
+            }]
+        });
+        chart.render();
     }
+}
+
 }

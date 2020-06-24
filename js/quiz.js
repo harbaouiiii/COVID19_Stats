@@ -119,7 +119,6 @@ start.addEventListener("click",function(){
     renderProgress();
     renderCounter();
     TIMER=setInterval(renderCounter,1000);
-    $("#quiz").fadeIn();
 })
 
 function renderQuestion(){
@@ -157,6 +156,7 @@ function renderCounter(){
             clearInterval(TIMER);
             document.getElementById("timer").style.display="none";
             quiz.style.display = "none";
+            document.getElementById("score").style.display="block";
             scoreDiv.innerHTML= "<h1>Your score is "+score+"/"+questions.length+"</h1>";
         }
     }
@@ -177,7 +177,8 @@ function checkAnswer(answer){
         clearInterval(TIMER);
         document.getElementById("timer").style.display="none";
         quiz.style.display = "none";
-        scoreDiv.innerHTML= "<h1>Your score is "+score+"/"+questions.length+"</h1>";
+        document.getElementById("score").style.display="block";
+        scoreDiv.innerHTML= '<h1>Your score is '+score+'/'+questions.length+'</h1><br><p id="par">View correct answers!</p>';
         new Audio("media/sounds/score.wav").play();
     }
 }
