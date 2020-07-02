@@ -121,10 +121,6 @@ h1, h2{
     animation: text 3s 1;
 }
 
-.video{
-    margin: 0;
-    text-align: center;
-}
 
 .flex-grid{
     display: flex;
@@ -178,10 +174,11 @@ button:hover{
 }
 
 .flex-content{
-    width: 32.5%;
+    width: 50%;
     box-sizing: border-box;
     margin-top: 20px;
     margin-bottom: 20px;
+    padding: 30px;
 }
 
 .row{
@@ -232,7 +229,7 @@ button:hover{
 }
 
 #choices, #question{
-    transform: translateX(100%);
+    transform: translateX(50%);
     text-align: center;
 }
 
@@ -258,7 +255,7 @@ button:hover{
 
 #timer{
     position: relative;
-    width : 300%;
+    width : 200%;
     text-align: center;
 }
 
@@ -270,7 +267,7 @@ button:hover{
 #progress{
     width : 500px;
     padding:5px;
-    transform: translateX(138%);
+    transform: translateX(130%);
 }
 
 .prog{
@@ -289,10 +286,10 @@ button:hover{
 }
 
 .intro{
-    transform: translateX(-10%);
-    transform: translateY(50%);
-    padding-right: 50px;
-
+    text-align: center;
+    transform: translate(25%);
+    padding: 30px;
+    font-size: larger;
 }
 
 #par{
@@ -322,7 +319,7 @@ button:hover{
 
 #score{
     text-align: center;
-    transform: translateX(100%);
+    transform: translateX(50%);
 }
 
 #myInput {
@@ -331,4 +328,31 @@ button:hover{
     padding: 12px 20px 12px 40px; 
     border: 1px solid #ddd; 
     margin-top: 12px; 
-}  
+} 
+
+.answers:hover{
+    cursor: pointer;
+}
+
+.box{
+    padding: 30px;
+}
+
+.question{
+    margin: 0;
+    font-size: 3rem;
+}
+
+.question_title{
+    color: rgb(64, 151, 76);
+    font-size: 2.1rem;
+}
+
+.answer{
+    padding-top: 12px;
+    font-size: 1.6rem;
+}
+
+.correction{
+    font-size: 1.3rem;
+}
