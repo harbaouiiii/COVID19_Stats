@@ -10,6 +10,7 @@
         crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Work+Sans:wght@500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.1/css/all.min.css">
     <script src="https://use.fontawesome.com/c0f9764ef7.js"></script>
@@ -17,32 +18,34 @@
 <body>
     <ul class="navigation">
         <li><a href="index.html">Home</a></li>
-        <li id="info"><a href="#">Info </a></li>
+        <li id="info"><a href="#">About Covid19</a></li>
         <li id="protect"><a href="#">Protect yourself</a></li>
         <li><a href="cases.html">Coronavirus Cases</a></li>
         <li><a href="quiz.html">Quiz</a></li>
     </ul>
+
     <div class="video">
         <video width="100%" controls>
             <source src="media/videos/Covid19.mkv" type="video/mp4">
         </video>
     </div>
-    <div class="flex-grid" id="info_div">
-        <h2 class="title">Informations about Coronavirus</h2>
-        <div class="flex-content">
+    
+    <h2 class="title">Informations about Coronavirus</h2>
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
             <h3><i class="fas fa-question-circle"></i> What is the Covid-19?</h3>
             <p>The virus identified in January 2020 in China is a new Coronavirus. <br>
                 The disease caused by this Coronavirus has been named COVID-19 by the World Health Organization - WHO. 
                 Since March 11, 2020, the WHO has described the global situation of VIDOC-19 as a pandemic; 
                 meaning that the epidemic now affects 137 countries over a wide area.</p>
         </div>
-        <div class="flex-content">
+        <div class="col-lg-6 col-sm-12">
             <h3><i class="fas fa-question-circle"></i> What are the symptoms of COVID-19?</h3>
             <p>The main symptoms are fever or a feeling of fever and signs of breathing difficulties such as coughing or shortness of breath. <br>
                 To date, no water contamination has been reported. The disease is respiratory and probably transmitted from animals to humans, 
                 but the source has not yet been identified.</p>
         </div>
-        <div class="flex-content">
+        <div class="col-lg-6 col-sm-12">
             <h3><i class="fas fa-question-circle"></i> How is COVID-19 transmitted?</h3>
             <p>The disease is transmitted through sputtering (sneezing, coughing). 
                 It is therefore considered that close contact with a sick person is necessary to transmit the disease: 
@@ -50,41 +53,42 @@
                 sneezing or talking in the absence of protective measures. 
                 One of the preferred vectors of virus transmission is contact with unwashed hands.</p>
         </div>
-        <div class="flex-content">
+        <div class="col-lg-6 col-sm-12">
             <h3><i class="fas fa-question-circle"></i> Where did COVID-19 come from?</h3>
             <p>The first people to have contracted the virus went to the Wuhan market in Hubei Province in China. <br>
                 An animal-transmitted disease (zoonosis) is therefore preferred but the origin has not been confirmed.</p>
         </div>
-        <div class="flex-content">
+        <div class="col-lg-6 col-sm-12">
             <h3><i class="fas fa-question-circle"></i> What is the incubation period of the disease?</h3>
             <p>The incubation period, the period between contamination and the appearance of the first symptoms. <br>
                 The incubation period for COVID-19 coronavirus is usually 3 to 5 days, however, it can extend up to 14 days. <br>
                 During this period, the subject may be contagious: he or she may carry the virus before the onset of symptoms or at the appearance of weak signals.</p>
         </div>
-        <div class="flex-content">
+        <div class="col-lg-6 col-sm-12">
             <h3><i class="fas fa-question-circle"></i> Is there a vaccine?</h3>
             <p>There is no vaccine against the COVID-19 coronavirus at this time. Several treatments are currently being evaluated in France, in conjunction with the WHO, for use against the COVID-19 Coronavirus.
                 In the meantime, treatment is symptomatic.</p>
         </div>
     </div>
-    <div class="flex-grid" id="protect_div">
-        <h2 class="title">Simple gestures to protect yourself</h2>
+
+    <h2 class="title">Simple gestures to protect yourself</h2>
+    <div id="protect_div">
         <div class="row">
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <h3><i class="fas fa-thumbs-up"></i> Wash your hands frequently</h3>
                 <p>Wash hands frequently with an alcohol-based hand sanitizer or soap and water. <br> <br>
                     <b>Why?</b><br> Washing your hands with an alcohol-based hand sanitizer or soap and water kills the virus if it is present on your hands.
                 </p>
             </div>
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <img src="media/images/1.png">
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <img src="media/images/2.png">
             </div>
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <h3><i class="fas fa-thumbs-up"></i> Avoid close contacts</h3>
                 <p>Maintain a distance of at least 1 metre from other people, especially if they are coughing, sneezing or have a fever. <br> <br>
                     <b>Why should I do this?</b><br>
@@ -92,21 +96,21 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <h3><i class="fas fa-thumbs-up"></i> Avoid touching eyes, nose and mouth.</h3>
-                <p>It is important to avoid touching your eyes, nose or mouth. </p> <br> <br>
+                <p>It is important to avoid touching your eyes, nose or mouth. </p> <br>
                 <p><b>Why is it important?</b><br>
                      Hands are in contact with many surfaces that may be contaminated with the virus. If you touch your eyes, nose or mouth, you may come into contact with the virus on these surfaces.</p>
             </div>
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <img src="media/images/3.png">
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <img src="media/images/4.png">
             </div>
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <h3><i class="fas fa-thumbs-up"></i> Observe the rules of respiratory hygiene</h3>
                 <p>Cover your mouth and nose with the crease of your elbow or with a handkerchief if you cough or sneeze
                     - dispose of the handkerchief immediately afterwards in a closed rubbish bin and wash your hands with a hydroalcoholic solution or soap and water. <br>
@@ -116,7 +120,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <h3><i class="fas fa-thumbs-up"></i> Stay informed and follow your doctor's advice.</h3>
                 <p>
                     Keep abreast of the latest developments regarding VIDOC-19. Follow the advice of your doctor, national and local health authorities or your employer on how to protect yourself and others from COVID-19. <br><br>
@@ -124,11 +128,15 @@
                     National and local authorities have the most up-to-date information about whether or not VIDC-19 is spreading in your area. They are in the best position to explain what people in your area should do to protect themselves.
                 </p>
             </div>
-            <div class="col">
+            <div class="col-sm-6 col-sm-12">
                 <img src="media/images/5.png">
             </div>
         </div>
     </div>
+
     <script src="js/cases.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
 </body>
 </html>
